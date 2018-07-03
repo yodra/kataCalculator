@@ -33,4 +33,11 @@ public class CalculateTest {
         assertEquals(result, 3);
     }
 
+    @Test
+    public void ignora_cualquier_caracter_no_numerico() {
+        Calculate calculate = new Calculate();
+        int result = calculate.sumStr("1,a");
+        assertEquals(result, 1);
+    }
+
 }
