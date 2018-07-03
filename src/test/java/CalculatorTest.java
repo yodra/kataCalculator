@@ -33,6 +33,12 @@ public class CalculatorTest {
         if (expression.equals("a")) {
             return 0;
         }
+
+        if (expression.length() > 1) {
+            String[] numbers = expression.split(",");
+            return Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]);
+        }
+
         return 1;
     }
 }
