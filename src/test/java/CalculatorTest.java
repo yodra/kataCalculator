@@ -25,8 +25,13 @@ public class CalculatorTest {
     }
 
     @Test
-    public void sum_numbers_separated_with_comma() {
+    public void sum_two_numbers_separated_with_comma() {
         assertEquals(2, sumNumbers("1,1"));
+    }
+
+    @Test
+    public void sum_numbers_separated_with_comma() {
+        assertEquals(3, sumNumbers("1,1,1"));
     }
 
     private int sumNumbers(String expression) {
