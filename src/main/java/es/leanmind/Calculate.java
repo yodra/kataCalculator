@@ -2,16 +2,20 @@ package es.leanmind;
 
 public class Calculate {
 
+    private static final String NUMBER_SEPARATOR = ",";
+
     public Integer sumStr(String numbers) {
-        Integer result;
+        Integer result = 0;
 
         if (numbers.length() == 1) {
             result = Integer.parseInt(numbers);
         } else {
-            String valueOne = String.valueOf(numbers.charAt(0));
-            String valueTwo = String.valueOf(numbers.charAt(2));
 
-            result = Integer.parseInt(valueOne) + Integer.parseInt(valueTwo);
+            String[] numberList = numbers.split(NUMBER_SEPARATOR);
+
+            for (String number : numberList) {
+                result += Integer.parseInt(number);
+            }
         }
 
         return result;
