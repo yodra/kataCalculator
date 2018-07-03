@@ -14,12 +14,19 @@ public class Calculate {
         } else {
 
             String[] numberList = numbers.split(NUMBER_SEPARATOR);
+            result = sumNumbers(numberList);
+        }
 
-            for (String number : numberList) {
+        return result;
 
-                if (StringUtils.isNumeric(number)) {
-                    result += Integer.parseInt(number);
-                }
+    }
+
+    private Integer sumNumbers(String[] numbers) {
+        Integer result = 0;
+
+        for (String number : numbers) {
+            if (StringUtils.isNumeric(number)) {
+                result += Integer.parseInt(number);
             }
         }
 
