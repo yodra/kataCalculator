@@ -39,6 +39,11 @@ public class CalculatorTest {
         assertEquals(3, sumNumbers("1,1,1"));
     }
 
+    @Test
+    public void sum_numbers_with_separator() {
+        assertEquals(2, sumNumbers("//#;1#1"));
+    }
+
     private int sumNumbers(String expression) {
 
         String[] numbers = expression.split(",");
