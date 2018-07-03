@@ -41,7 +41,13 @@ public class CalculatorTest {
 
         if (expression.length() > 1) {
             String[] numbers = expression.split(",");
-            return Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]);
+            int result = 0;
+
+            for (String number : numbers) {
+                result = result + Integer.parseInt(number);
+            }
+
+            return result;
         }
 
         return 1;
