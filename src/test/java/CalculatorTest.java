@@ -40,16 +40,15 @@ public class CalculatorTest {
     }
 
     private int sumNumbers(String expression) {
-        if (expression.equals("a")) {
-            return 0;
-        }
 
-        if (expression.length() > 1) {
+        if (expression.length() >= 1) {
             String[] numbers = expression.split(",");
             int result = 0;
 
             for (String number : numbers) {
-                result = result + Integer.parseInt(number);
+                if (number.matches("\\d")) {
+                    result = result + Integer.parseInt(number);
+                }
             }
 
             return result;
