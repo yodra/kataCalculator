@@ -19,6 +19,6 @@ public class CalculatorTest {
     }
 
     private int sumNumbers(String expression) {
-        return 0;
+        return 1;
     }
 }
