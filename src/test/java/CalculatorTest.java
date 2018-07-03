@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -46,25 +45,32 @@ public class CalculatorTest {
 
     private int sumNumbers(String expression) {
         int result = 0;
-        String[] numbers = createNumbers(expression);
+        String[] tokens = getTokens(expression);
 
-        for (String number : numbers) {
-            if (number.matches("\\d")) {
-                result = result + Integer.parseInt(number);
+        for (String token : tokens) {
+            if (isNumber(token)) {
+                result += Integer.parseInt(token);
             }
         }
 
         return result;
     }
 
-    private String[] createNumbers(String expression) {
+    private String[] getTokens(String expression) {
         String[] numbers = expression.split(",");
 
-        if ((expression.length() > 1) && (expression.substring(0,2).equals("//"))) {
+        if (hasCustomSeparator(expression)) {
             String separator = String.valueOf(expression.charAt(2));
             numbers          = expression.substring(4, expression.length()).split(separator);
         }
 
         return numbers;
+    }
+
+    private static boolean isNumber(String number) {
+        return number.matches("\\d");
+    }
+    private static boolean hasCustomSeparator(String expression) {
+        return (expression.length() > 1) && (expression.substring(0,2).equals("//"));
     }
 }
