@@ -45,9 +45,8 @@ public class CalculatorTest {
     }
 
     private int sumNumbers(String expression) {
-
-        String[] numbers = expression.split(",");
         int result = 0;
+        String[] numbers = createNumbers(expression);
 
         for (String number : numbers) {
             if (number.matches("\\d")) {
@@ -56,5 +55,16 @@ public class CalculatorTest {
         }
 
         return result;
+    }
+
+    private String[] createNumbers(String expression) {
+        String[] numbers = expression.split(",");
+
+        if ((expression.length() > 1) && (expression.substring(0,2).equals("//"))) {
+            String separator = String.valueOf(expression.charAt(2));
+            numbers          = expression.substring(4, expression.length()).split(separator);
+        }
+
+        return numbers;
     }
 }
