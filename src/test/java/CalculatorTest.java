@@ -10,7 +10,7 @@ public class CalculatorTest {
      * "?" = 0 OK
      * "1,1" = 2 OK
      * "1,1,1" = 3 OK
-     * "1,?" = 1
+     * "1,?" = 1 OK
      * "//#;1#1" = 2
      */
 
@@ -41,19 +41,15 @@ public class CalculatorTest {
 
     private int sumNumbers(String expression) {
 
-        if (expression.length() >= 1) {
-            String[] numbers = expression.split(",");
-            int result = 0;
+        String[] numbers = expression.split(",");
+        int result = 0;
 
-            for (String number : numbers) {
-                if (number.matches("\\d")) {
-                    result = result + Integer.parseInt(number);
-                }
+        for (String number : numbers) {
+            if (number.matches("\\d")) {
+                result = result + Integer.parseInt(number);
             }
-
-            return result;
         }
 
-        return 1;
+        return result;
     }
 }
