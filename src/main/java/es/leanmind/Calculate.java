@@ -2,6 +2,9 @@ package es.leanmind;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 public class Calculate {
 
     private static final String NUMBER_SEPARATOR = ",";
@@ -22,14 +25,10 @@ public class Calculate {
     }
 
     private Integer sumNumbers(String[] numbers) {
-        Integer result = 0;
 
-        for (String number : numbers) {
-            if (StringUtils.isNumeric(number)) {
-                result += Integer.parseInt(number);
-            }
-        }
-
-        return result;
+        return Arrays.stream(numbers)
+                .filter(StringUtils::isNumeric)
+                .mapToInt(Integer::parseInt)
+                .sum();
     }
 }
