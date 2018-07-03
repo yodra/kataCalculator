@@ -18,7 +18,11 @@ public class CalculatorTest {
         assertEquals(1, sumNumbers("1"));
     }
 
-    private int sumNumbers(String expression) {
-        return 1;
+    @Test
+    public void ignores_not_number_char() {
+        assertEquals(0, sumNumbers("a"));
+    }
+
+    private int sumNumbers(String expression) {        return 1;
     }
 }
