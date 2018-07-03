@@ -3,14 +3,13 @@ package es.leanmind;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
-public class Calculate {
+public class Calculator {
 
     private static final String NUMBER_SEPARATOR = ",";
 
-    public Integer sumStr(String numbers) {
-        Integer result = 0;
+    public int sumStr(String numbers) {
+        int result;
 
         if (numbers.length() == 1) {
             result = Integer.parseInt(numbers);
@@ -24,7 +23,7 @@ public class Calculate {
 
     }
 
-    private Integer sumNumbers(String[] numbers) {
+    private int sumNumbers(String[] numbers) {
 
         return Arrays.stream(numbers)
                 .filter(StringUtils::isNumeric)
