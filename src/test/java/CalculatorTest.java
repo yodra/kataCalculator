@@ -7,6 +7,7 @@ public class CalculatorTest {
 
     /**
      * "4" = 4
+     * "?" = 0
      * "1,1" = 2
      * "1,1,1" = 3
      * "1,?" = 1
@@ -21,6 +22,11 @@ public class CalculatorTest {
     @Test
     public void ignores_not_number_char() {
         assertEquals(0, sumNumbers("a"));
+    }
+
+    @Test
+    public void sum_numbers_separated_with_comma() {
+        assertEquals(2, sumNumbers("1,1"));
     }
 
     private int sumNumbers(String expression) {
