@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CalculatorTest {
 
     /**
-     * "4" = 4
-     * "?" = 0
-     * "1,1" = 2
-     * "1,1,1" = 3
+     * "4" = 4 OK
+     * "?" = 0 OK
+     * "1,1" = 2 OK
+     * "1,1,1" = 3 OK
      * "1,?" = 1
      * "//#;1#1" = 2
      */
@@ -22,6 +22,11 @@ public class CalculatorTest {
     @Test
     public void ignores_not_number_char() {
         assertEquals(0, sumNumbers("a"));
+    }
+
+    @Test
+    public void ignores_not_number_symbols() {
+        assertEquals(1, sumNumbers("1,a"));
     }
 
     @Test
