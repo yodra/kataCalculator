@@ -13,9 +13,16 @@ public class CalculateTest {
      */
 
     @Test
-    public void calculateSumStr() {
+    public void debe_retornar_mismo_valor_recibido() {
         Calculate calculate = new Calculate();
         int result = calculate.sumStr("1");
         assertEquals(result, 1);
+    }
+
+    @Test
+    public void suma_dos_numeros() {
+        Calculate calculate = new Calculate();
+        int result = calculate.sumStr("1,1");
+        assertEquals(result, 2);
     }
 }
