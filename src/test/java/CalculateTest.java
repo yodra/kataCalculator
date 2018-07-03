@@ -25,4 +25,12 @@ public class CalculateTest {
         int result = calculate.sumStr("1,1");
         assertEquals(result, 2);
     }
+
+    @Test
+    public void suma_mas_de_dos_numeros() {
+        Calculate calculate = new Calculate();
+        int result = calculate.sumStr("1,1,1");
+        assertEquals(result, 3);
+    }
+
 }
