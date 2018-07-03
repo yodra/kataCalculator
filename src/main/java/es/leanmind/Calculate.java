@@ -1,5 +1,7 @@
 package es.leanmind;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Calculate {
 
     private static final String NUMBER_SEPARATOR = ",";
@@ -14,7 +16,10 @@ public class Calculate {
             String[] numberList = numbers.split(NUMBER_SEPARATOR);
 
             for (String number : numberList) {
-                result += Integer.parseInt(number);
+
+                if (StringUtils.isNumeric(number)) {
+                    result += Integer.parseInt(number);
+                }
             }
         }
 
