@@ -43,6 +43,14 @@ public class CalculatorTest {
         assertEquals(2, sumNumbers("//#;1#1"));
     }
 
+    @Test
+    public void sum_numbers_with_long_separator() {
+        assertEquals(2, sumNumbers("//#$;1#$1"));
+    }
+
+    private static final String SEPARATOR = ",";
+    private static final String CUSTOM_SEPARATOR = "//";
+
     private int sumNumbers(String expression) {
         int result = 0;
         String[] tokens = getTokens(expression);
@@ -57,20 +65,29 @@ public class CalculatorTest {
     }
 
     private String[] getTokens(String expression) {
-        String[] numbers = expression.split(",");
+        String[] tokens = expression.split(SEPARATOR);
 
         if (hasCustomSeparator(expression)) {
-            String separator = String.valueOf(expression.charAt(2));
-            numbers          = expression.substring(4, expression.length()).split(separator);
+            String separator = getSeparator(expression);
+                   tokens    = tokensSplitter(expression, separator);
         }
 
-        return numbers;
+        return tokens;
     }
 
     private static boolean isNumber(String number) {
         return number.matches("\\d");
     }
+
     private static boolean hasCustomSeparator(String expression) {
-        return (expression.length() > 1) && (expression.substring(0,2).equals("//"));
+        return (expression.length() > 1) && (expression.substring(0,2).equals(CUSTOM_SEPARATOR));
+    }
+
+    private static String getSeparator(String expression) {
+        return String.valueOf(expression.charAt(2));
+    }
+
+    private static String[] tokensSplitter(String expression, String separator) {
+        return expression.substring(4, expression.length()).split(separator);
     }
 }
